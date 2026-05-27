@@ -31,6 +31,6 @@ app.get('/personal', (req, res) => {
 });
 
 // Start the server
-app.listen(PORT, () => {
-    console.log(`Lalas Frontend listening on port ${PORT}`);
+app.listen(PORT, '100.71.41.70', () => {
+    console.log(`Lalas Frontend listening on port ${PORT} at 100.71.41.70`);
 });

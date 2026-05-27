@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const systemInfoDiv = document.getElementById('system-info');
     const appsStatusListDiv = document.getElementById('apps-status-list');
-    const BACKEND_URL = 'http://localhost:3000'; // lalas-backend URL
+    const BACKEND_URL = 'http://openclaw-server.tail89af7b.ts.net:3000'; // REPLACE with your server's public IP
 
     async function fetchMachineStatus() {
         try {

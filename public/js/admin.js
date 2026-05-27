@@ -1,7 +1,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     const appListDiv = document.getElementById('app-list');
-    const BACKEND_URL = 'http://localhost:3000'; // lalas-backend URL
+    const BACKEND_URL = 'http://openclaw-server.tail89af7b.ts.net:3000'; // Tailscale IP for lalas-backend
 
     async function fetchRunningApps() {
         try {
@@ -48,14 +48,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function restartApp(appName) {
         try {
-            // In a real scenario, lalas-backend would expose an endpoint to restart a service
-            // Let's assume lalas-backend has a /api/restart-service endpoint that takes the service name.
-            const response = await fetch(`${BACKEND_URL}/api/restart-service`, {
+            const response = await fetch(`${BACKEND_URL}/api/restart/${appName}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ serviceName: appName }),
+                body: JSON.stringify({}), // Empty body as appName is in URL
             });
 
             if (!response.ok) {
