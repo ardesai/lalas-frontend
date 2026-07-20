@@ -1,7 +1,8 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     const appListDiv = document.getElementById('app-list');
-    const BACKEND_URL = 'http://openclaw-server.tail89af7b.ts.net:3000'; // Tailscale IP for lalas-backend
+    const config = window.APP_CONFIG || {};
+    const BACKEND_URL = config.backendUrl || `${window.location.protocol}//${window.location.hostname}:${config.backendPort || 3000}`;
 
     async function fetchRunningApps() {
         try {
