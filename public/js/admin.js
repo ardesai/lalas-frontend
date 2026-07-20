@@ -1,15 +1,10 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     const appListDiv = document.getElementById('app-list');
-    const config = window.APP_CONFIG || {};
-    const BACKEND_URL = config.backendUrl || `${window.location.protocol}//${window.location.hostname}:${config.backendPort || 3000}`;
 
     async function fetchRunningApps() {
         try {
-            // In a real scenario, lalas-backend would expose an endpoint to list Node.js services
-            // For now, we simulate this or assume a specific endpoint exists.
-            // Let's assume lalas-backend has an /api/services endpoint that returns a list of service names.
-            const response = await fetch(`${BACKEND_URL}/api/services`);
+            const response = await fetch('/api/services');
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
@@ -49,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function restartApp(appName) {
         try {
-            const response = await fetch(`${BACKEND_URL}/api/restart/${appName}`, {
+            const response = await fetch(`/api/restart/${appName}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

@@ -2,13 +2,10 @@
 document.addEventListener('DOMContentLoaded', () => {
     const systemInfoDiv = document.getElementById('system-info');
     const appsStatusListDiv = document.getElementById('apps-status-list');
-    const config = window.APP_CONFIG || {};
-    const BACKEND_URL = config.backendUrl || `${window.location.protocol}//${window.location.hostname}:${config.backendPort || 3000}`;
 
     async function fetchMachineStatus() {
         try {
-            // Assume lalas-backend has an /api/machine-status endpoint
-            const response = await fetch(`${BACKEND_URL}/api/machine-status`);
+            const response = await fetch('/api/machine-status');
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
@@ -27,8 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function fetchDeployedAppsStatus() {
         try {
-            // Assume lalas-backend has an /api/deployed-apps-status endpoint
-            const response = await fetch(`${BACKEND_URL}/api/deployed-apps-status`);
+            const response = await fetch('/api/deployed-apps-status');
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
